@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AWS AI Practitioner (AIF-C01) — 30-Page Master Reviewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1F5;--surface:#FFFFFF;--surface2:#F5F7FA;--ink:#172031;--muted:#5A667A;--line:#D8DEE7;--line-strong:#A9B4C4;
+  --accent:#1F5FAD;--accent-soft:#E2EBF7;--on-accent:#FFFFFF;--warn:#9A4A08;--warn-soft:#FBEADB;
+  --ok:#1E7F55;--ok-soft:#DDF1E6;--bad:#B0364A;--bad-soft:#F8E1E5;
+  --d1:#6A4DB8;--d2:#B0364A;--d3:#1F5FAD;--d4:#27805F;--d5:#9A5B10;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151D;--surface:#18202B;--surface2:#1F2835;--ink:#E3E8F0;--muted:#98A5B8;--line:#2B3646;--line-strong:#4A5870;
+    --accent:#86B4F0;--accent-soft:#1F3350;--on-accent:#0E1622;--warn:#F2AE6B;--warn-soft:#3A2A1C;
+    --ok:#62C695;--ok-soft:#173528;--bad:#EE8394;--bad-soft:#3D1D24;
+    --d1:#A993EE;--d2:#EE8394;--d3:#86B4F0;--d4:#6CCFA4;--d5:#EEBB7A;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151D;--surface:#18202B;--surface2:#1F2835;--ink:#E3E8F0;--muted:#98A5B8;--line:#2B3646;--line-strong:#4A5870;
+  --accent:#86B4F0;--accent-soft:#1F3350;--on-accent:#0E1622;--warn:#F2AE6B;--warn-soft:#3A2A1C;
+  --ok:#62C695;--ok-soft:#173528;--bad:#EE8394;--bad-soft:#3D1D24;
+  --d1:#A993EE;--d2:#EE8394;--d3:#86B4F0;--d4:#6CCFA4;--d5:#EEBB7A;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:32px 20px 100px}
+header{margin-bottom:28px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.05;margin:8px 0 10px;letter-spacing:-0.03em}
+p.sub{color:var(--muted);font-size:18px;max-width:75ch;margin:0}
+
+/* Search & Filter Nav */
+.toolbar{position:sticky;top:0;z-index:10;background:var(--bg);padding:14px 0;border-bottom:1px solid var(--line);margin-bottom:24px;display:grid;gap:12px}
+.searchbox{position:relative}
+.searchbox input{width:100%;padding:13px 18px 13px 44px;border-radius:12px;border:1.5px solid var(--line-strong);background:var(--surface);color:var(--ink);font-size:16px;outline:none;font-family:inherit}
+.searchbox input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:18px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;overflow-x:auto}
+.filter-btn{font-size:14px;padding:7px 14px;border-radius:99px;border:1px solid var(--line-strong);background:var(--surface);cursor:pointer;white-space:nowrap;font-weight:700;transition:all .15s}
+.filter-btn:hover{border-color:var(--ink)}
+.filter-btn.active{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+
+/* Content Sections */
+.sec-title{font-size:24px;margin:32px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:10px}
+.badge{font-size:12px;padding:3px 9px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:border-color .15s}
+.card:hover{border-color:var(--line-strong)}
+.card-term{font-size:17px;font-weight:700;color:var(--ink);margin:0 0 4px}
+.card-def{font-size:14.5px;color:var(--muted);margin:0 0 8px}
+.card-ex{font-size:13.5px;background:var(--surface2);padding:8px 12px;border-radius:8px;border-left:3px solid var(--accent);color:var(--ink);margin:0}
+
+/* Flowchart Cards */
+.flow-card{background:var(--surface);border:1px solid var(--line-strong);border-radius:16px;padding:20px;margin-bottom:16px}
+.flow-header{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.flow-num{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:20px;font-weight:700;color:var(--accent)}
+.flow-title{font-size:18px;font-weight:700;color:var(--ink)}
+.flow-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0}
+.step{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:12px;position:relative}
+.step-num{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:12px;font-weight:700;margin-bottom:6px}
+.step-text{font-size:14px;line-height:1.35;font-weight:700;color:var(--ink)}
+.flow-footer{font-size:13.5px;background:var(--accent-soft);padding:10px 14px;border-radius:10px;margin-top:12px}
+.flow-footer b{color:var(--accent)}
+.flow-real{font-size:13px;color:var(--muted);margin-top:6px}
+
+/* Traps Table */
+.trap-row{display:grid;grid-template-columns:40px 220px 1fr;gap:12px;align-items:start;padding:10px 14px;border-bottom:1px solid var(--line);font-size:14.5px}
+.trap-row:nth-child(even){background:var(--surface2)}
+.trap-num{font-weight:700;color:var(--muted)}
+.trap-key{font-weight:700;color:var(--accent)}
+.trap-desc{color:var(--ink)}
+@media (max-width:700px){.trap-row{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">AWS Certified AI Practitioner · AIF-C01 v1.1</div>
+  <h1>The Complete 30-Page Master Review</h1>
+  <p class="sub">20-Page Keyword Reviewer + 68 Exam Traps + 40 Guided Ordering Flowcharts. Fully updated for September 2026 objectives.</p>
+</header>
+
+<div class="toolbar">
+  <div class="searchbox">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="Search keywords, services, exam traps, or flowcharts (press '/' to focus)..." autocomplete="off">
+  </div>
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-tab="all">All (30 Pages)</button>
+    <button class="filter-btn" data-tab="d1">Domain 1: ML Basics</button>
+    <button class="filter-btn" data-tab="d2">Domain 2: GenAI & Agents</button>
+    <button class="filter-btn" data-tab="d3">Domain 3: FMs & RAG</button>
+    <button class="filter-btn" data-tab="d4">Domain 4: Responsible AI</button>
+    <button class="filter-btn" data-tab="d5">Domain 5: Security</button>
+    <button class="filter-btn" data-tab="traps">68 Exam Traps</button>
+    <button class="filter-btn" data-tab="flowcharts">40 Flowcharts</button>
+  </div>
+</div>
+
+<main id="content">
+  <!-- Dynamic JavaScript Renderer will load all 30 pages here -->
+</main>
+
+</div>
+
+<script>
+const DATA = {
+  d1: [
+    { term: "Artificial Intelligence (AI)", def: "Computer systems performing intelligence-like tasks.", ex: "A bank uses AI to flag unusual account activity." },
+    { term: "Machine Learning (ML)", def: "AI learns patterns from data rather than hand-coded rules.", ex: "A store trains a model using historical customer purchases." },
+    { term: "Deep Learning (DL)", def: "ML utilizing multilayer artificial neural networks.", ex: "A hospital uses a deep network to analyze medical MRI scans." },
+    { term: "Neural Network", def: "Connected layers of weighted artificial neurons learning nonlinear boundaries.", ex: "A delivery company learns complex relationships among route factors." },
+    { term: "Input / Hidden / Output Layers", def: "Input receives raw features; hidden learns representations; output produces predictions.", ex: "A credit model processes age/income, learns risk patterns, and outputs default probabilities." },
+    { term: "Activation Function", def: "Adds nonlinearity to neural networks (e.g. ReLU, Sigmoid).", ex: "Enables learning curved decision boundaries between distinct classes." },
+    { term: "Supervised Learning", def: "Train on inputs with known target labels.", ex: "A retailer trains on orders marked delivered or returned." },
+    { term: "Unsupervised Learning", def: "Find structure in data without target labels.", ex: "A telecom company clusters subscribers into behavior profiles." },
+    { term: "Reinforcement Learning (RL)", def: "Agent learns sequential actions through reward/penalty feedback.", ex: "A warehouse robot improves navigation routes through simulated rewards." },
+    { term: "Precision vs Recall", def: "Precision minimizes false alarms (FP); Recall minimizes missed true cases (FN).", ex: "Cancer screening prioritizes Recall; Fraud investigators with limited time prioritize Precision." },
+    { term: "Data Drift vs Concept Drift", def: "Data drift = input feature distribution changes; Concept drift = input-to-target relationship changes.", ex: "Camera resolution changes = data drift; new customer fraud tactics = concept drift." },
+    { term: "Inference Modes", def: "Real-time (low-latency online), Async (queued long-running), Batch (offline bulk), Serverless (intermittent).", ex: "Checkout scoring uses real-time; video processing uses async; nightly claims uses batch." }
+  ],
+  d2: [
+    { term: "Foundation Model (FM)", def: "Broadly pre-trained, reusable base model adaptable to diverse downstream tasks.", ex: "An app adapts one general model to summarize, write, and answer questions." },
+    { term: "Transformer & Self-Attention", def: "Architecture that computes relationships between token positions across long sequences.", ex: "A chatbot connects a pronoun to its subject mentioned three paragraphs earlier." },
+    { term: "Token & Context Window", def: "Token is the basic processing unit; Context window is the maximum active token limit.", ex: "A contract assistant must truncate or summarize an overlong document to fit 128k tokens." },
+    { term: "Temperature & Top-P", def: "Temperature scales logit randomness; Top-P (nucleus sampling) cuts off cumulative probability pool.", ex: "A reporting bot sets temp=0.0 for stable tables; creative writing sets top-p=0.9." },
+    { term: "Prompt Caching", def: "Reuses pre-computed KV-cache for identical static prompt prefixes.", ex: "A chatbot caches a 6,000-token corporate policy preamble to save 90% input token cost." },
+    { term: "Model Context Protocol (MCP)", def: "Open standard interface for connecting AI agents to external tools and data sources.", ex: "An agent accesses CRM and inventory databases without vendor SDK lock-in." },
+    { term: "Strands Agents", def: "Open-source model-first SDK for building AI agents.", ex: "A developer builds an autonomous multi-step research assistant." },
+    { term: "Amazon Bedrock AgentCore", def: "Managed AWS platform for deploying, operating, and securing agents at production scale.", ex: "Supplies managed runtime, identity mapping, policy limits, and session memory." },
+    { term: "Kiro", def: "Agentic specification-driven developer coding environment.", ex: "Converts feature briefs into tested production microservices." },
+    { term: "Amazon Quick", def: "Connected business AI workspace for enterprise research and workflows.", ex: "An operations manager analyzes internal spreadsheets conversationally." }
+  ],
+  d3: [
+    { term: "Retrieval-Augmented Generation (RAG)", def: "Grounds foundation model responses using dynamic external source documents.", ex: "An HR assistant retrieves current leaves policy PDFs to answer employee questions." },
+    { term: "Chunking & Embeddings", def: "Splitting source text into manageable pieces and converting them into dense semantic vectors.", ex: "A help desk splits manuals by header and embeds them for semantic similarity search." },
+    { term: "Vector Stores in Scope", def: "Bedrock Knowledge Bases, OpenSearch Serverless, Aurora PostgreSQL pgvector, RDS PostgreSQL, Neptune.", ex: "OpenSearch Serverless handles automatic scaling without cluster provisioning." },
+    { term: "RAG Failure Layers", def: "Context relevance (off-topic), Context coverage (incomplete), Faithfulness (hallucination), Citations (bad source link).", ex: "Diagnosing whether the retrieval layer or the generation layer failed." },
+    { term: "Customization Ladder", def: "Prompting -> RAG (new knowledge) -> Fine-tuning (persistent behavior) -> Continued Pre-training (domain language).", ex: "Try few-shot prompts first before paying for fine-tuning weights." },
+    { term: "Model Distillation", def: "Trains a smaller student model to mimic outputs from a larger teacher model.", ex: "Compresses a costly frontier assistant into a lightweight model for routine tickets." },
+    { term: "ROUGE vs BLEU vs BERTScore", def: "ROUGE = summarization n-gram recall; BLEU = translation n-gram precision; BERTScore = semantic embedding similarity.", ex: "BERTScore gives credit when a summary uses valid synonyms with zero n-gram overlap." }
+  ],
+  d4: [
+    { term: "Transparency vs Explainability", def: "Transparency = system-level documentation & limits; Explainability = why a specific individual prediction occurred.", ex: "Model cards provide transparency; SHAP values explain a rejected mortgage application." },
+    { term: "SageMaker Model Cards", def: "Centralized immutable records documenting model intended uses, risk ratings, and evaluation metrics.", ex: "An audit team archives model cards for regulatory compliance." },
+    { term: "SageMaker Clarify", def: "Detects pre-training and post-training bias and calculates SHAP feature attributions.", ex: "A lender checks whether age or gender improperly influenced credit limits." },
+    { term: "AWS AI Service Cards", def: "AWS-published transparency documentation describing intended uses and limits of AWS-managed AI services.", ex: "A customer verifies Rekognition Face Liveness limitations before deployment." },
+    { term: "Amazon Bedrock Guardrails", def: "Configurable runtime protections enforcing denied topics, content filters, and PII masking.", ex: "Redacts customer credit card numbers and blocks financial advice." }
+  ],
+  d5: [
+    { term: "AWS Shared Responsibility", def: "AWS secures the cloud infrastructure; Customer secures data, prompts, IAM policies, and encryption.", ex: "Customer configures Bedrock IAM permissions and KMS keys." },
+    { term: "AWS PrivateLink (VPC Interface Endpoints)", def: "Enables private network connectivity to AWS services without public internet routing.", ex: "An EC2 application invokes Bedrock models entirely over the private AWS backbone." },
+    { term: "AWS KMS Customer Managed Keys", def: "Grants customer control over key policies, rotation, and auditability for data at rest.", ex: "A clinic encrypts its medical document vector bucket using customer managed KMS keys." },
+    { term: "Amazon Macie", def: "Machine learning service that automatically discovers and classifies sensitive PII in Amazon S3.", ex: "A university scans student archives for Social Security Numbers before training." },
+    { term: "AWS CloudTrail", def: "Authoritative governance audit log capturing who invoked what API, from where, and when.", ex: "Traces which IAM role invoked Bedrock InvokeModel at 2:00 AM." },
+    { term: "Direct vs Indirect Prompt Injection", def: "Direct = attacker prompt; Indirect = untrusted retrieved source (PDF/webpage) containing hidden instructions.", ex: "A retrieved resume embeds white text ordering the bot to accept the applicant." }
+  ],
+  traps: [
+    { num: "01", key: "99% ACCURACY", desc: "Imbalanced classes can hide nearly all fraud misses." },
+    { num: "02", key: "FP VS FN", desc: "False positive = false alarm; False negative = missed real case." },
+    { num: "03", key: "PRECISION VS RECALL", desc: "Precision lowers false alarms; Recall catches all actual positives." },
+    { num: "04", key: "TRAIN VS TEST", desc: "High training performance is never proof of generalization on unseen data." },
+    { num: "05", key: "HIGH BIAS VS VARIANCE", desc: "Underfit = both poor; Overfit = strong train / poor test." },
+    { num: "06", key: "DATA VS CONCEPT DRIFT", desc: "Input distribution changes (P(X)) vs input-to-target relationship changes (P(Y|X))." },
+    { num: "14", key: "TEXTRACT VS COMPREHEND", desc: "Document OCR/tables/key-values vs semantic natural language meaning/sentiment." },
+    { num: "15", key: "TRANSCRIBE VS TRANSLATE", desc: "Audio-to-text conversion vs text translation across languages." },
+    { num: "16", key: "POLLY VS TRANSCRIBE", desc: "Text-to-speech audio synthesis vs speech-to-text transcription." },
+    { num: "19", key: "BEDROCK VS SAGEMAKER", desc: "Serverless managed FM APIs vs fully custom ML development and infrastructure." },
+    { num: "23", key: "MCP VS PERMISSION", desc: "Tool connectivity standard is NOT a permission or authorization grant." },
+    { num: "24", key: "GUARDRAILS VS IAM", desc: "Content safety policies are NOT resource access permissions." },
+    { num: "28", key: "LOW TEMPERATURE", desc: "Reduces sampling variation; never guarantees factual truth." },
+    { num: "32", key: "RAG VS FINE-TUNING", desc: "External dynamic facts with citations vs persistent learned behavior/tone." },
+    { num: "42", key: "ROUGE VS BLEU", desc: "Summarization n-gram recall vs translation n-gram precision." },
+    { num: "47", key: "CLARIFY VS MODEL CARDS", desc: "Bias/explainability analysis vs documented model fact sheets." },
+    { num: "49", key: "TRANSPARENCY VS EXPLAINABILITY", desc: "System-level disclosure and limits vs specific rationale for an individual prediction." },
+    { num: "55", key: "MACIE VS INSPECTOR", desc: "S3 sensitive data/PII scanning vs EC2/ECR/Lambda vulnerability scanning." },
+    { num: "56", key: "CLOUDTRAIL VS CLOUDWATCH", desc: "API actor/event auditing vs system operational metrics and alarms." },
+    { num: "60", key: "PRIVATELINK VS ENCRYPTION", desc: "Private network transit does not replace encryption at rest or IAM policies." }
+  ],
+  flowcharts: [
+    {
+      num: "01", title: "Complete Supervised ML Lifecycle",
+      steps: ["State business goal and costly error", "Collect representative governed data", "Split data and build meaningful features", "Train, tune and test on held-out cases", "Deploy, monitor and capture feedback"],
+      why: "Never train before deciding what outcome matters; reserve an untouched final test.",
+      real: "A delivery startup predicts late orders, assesses misses, then monitors the live ETA model."
+    },
+    {
+      num: "02", title: "Fair Comparison: Train / Validate / Test",
+      steps: ["Define target and model-success rules", "Split examples with leakage controls", "Fit candidates on the training subset", "Use validation to tune and select", "Use untouched test data only for final check"],
+      why: "Tuning repeatedly against the final test makes the reported score too optimistic.",
+      real: "A lender trains several fraud models without using future repayment outcomes in development."
+    },
+    {
+      num: "05", title: "Monitoring When Real Labels Arrive Late",
+      steps: ["Approve baseline metrics and live conditions", "Monitor new inputs and predictions now", "Join verified outcomes when available", "Measure labeled accuracy and subgroup gaps", "Investigate, approve and monitor fixes"],
+      why: "No confirmed labels means no defensible current outcome-based recall yet.",
+      real: "An insurer notices new customer-device distributions before true claim outcomes arrive."
+    },
+    {
+      num: "08", title: "Choose an Inference Mode by Workload",
+      steps: ["Define response-time requirement", "Estimate request size and duration", "Measure volume / traffic intermittency", "Compare real-time, async, batch, serverless", "Benchmark quality, SLA and total cost"],
+      why: "Interactive = real-time; Long request = async; Bulk = batch; Bursty = serverless.",
+      real: "A utility scores millions of meters overnight with batch rather than an always-on endpoint."
+    },
+    {
+      num: "17", title: "RAG Ingestion: Prepare Knowledge Base",
+      steps: ["Approve documents; attach access metadata", "Parse / clean and chunk source files", "Create embeddings of each chunk", "Store vectors plus source metadata", "Sync updates; verify index is ready"],
+      why: "CHUNK -> EMBED -> INDEX occurs before the user can retrieve indexed passages.",
+      real: "A clinic indexes updated patient-information leaflets in Bedrock Knowledge Bases."
+    },
+    {
+      num: "18", title: "RAG Query: Return Evidence-Based Answer",
+      steps: ["Authenticate and authorize requester", "Embed/query the user question", "Search and retrieve permitted passages", "Augment the FM prompt with evidence", "Generate, verify grounding and cite"],
+      why: "Document embeddings are prepared earlier; QUERY embeddings are made at request time.",
+      real: "A staff member asks a private HR assistant a question and receives cited current policy."
+    },
+    {
+      num: "22", title: "Lowest-Complexity GenAI Solution Ladder",
+      steps: ["TRY zero-shot clear instruction", "IF inadequate, add few-shot examples", "IF facts are missing, consider RAG", "IF behavior must persist, consider tune", "IF broad domain gap, consider pretrain"],
+      why: "Decision tree, not compulsory pipeline: choose based on the gap; distillation targets efficiency.",
+      real: "A retailer tries five brand examples before investing in a persistent customized model."
+    },
+    {
+      num: "34", title: "Secure RAG: Request to Response",
+      steps: ["Authenticate requesting identity", "Authorize resource and document scope", "Retrieve ONLY permitted relevant context", "Generate from authorized evidence", "Validate/filter answer; keep audit logs"],
+      why: "Never retrieve every tenant documents first and hope the FM hides the wrong ones.",
+      real: "An HR chatbot must not pull another employee confidential pay records."
+    },
+    {
+      num: "37", title: "Memory Anchor: ML Development",
+      steps: ["BUSINESS: define outcome and error cost", "DATA: collect, govern, split and prepare", "TRAIN: fit and tune using development", "TEST: check untouched final holdout", "OPERATE: deploy, monitor and retrain"],
+      why: "ONE-LINE MEMORIZATION: problem -> data -> train -> test -> monitor.",
+      real: "A bank begins with fraud-loss targets and keeps test outcomes separate until final scoring."
+    },
+    {
+      num: "38", title: "Memory Anchor: RAG Preparation",
+      steps: ["SOURCE: approved documents and access", "CHUNK: parse/segment source material", "EMBED: convert each chunk to vectors", "INDEX: store vector + metadata", "SYNC: verify readiness and future updates"],
+      why: "ONE-LINE MEMORIZATION: documents -> chunks -> embeddings -> vector index -> sync.",
+      real: "A policy assistant indexes revised manuals before staff submit their questions."
+    },
+    {
+      num: "39", title: "Memory Anchor: RAG Answer",
+      steps: ["IDENTIFY: authenticate the user", "PERMIT: authorize data access", "RETRIEVE: query permitted passages", "GENERATE: place evidence into FM context", "VERIFY: validate, cite and log"],
+      why: "ONE-LINE MEMORIZATION: authN -> authZ -> retrieval -> generation -> validation.",
+      real: "A staff chatbot answers questions only from the documents the requester may read."
+    },
+    {
+      num: "40", title: "Memory Anchor: Model Release",
+      steps: ["REQUIREMENTS: use case, risks and Region", "EVIDENCE: representative cases and rubric", "COMPARE: run models at equal settings", "REVIEW: automated and human quality tests", "RELEASE: document, approve and monitor"],
+      why: "ONE-LINE MEMORIZATION: requirements -> cases -> tests -> review -> operate.",
+      real: "An insurer selects a suitable FM only after compliance, test quality and expert review."
+    }
+  ]
+};
+
+const $ = id => document.getElementById(id);
+let activeTab = "all";
+let filterQuery = "";
+
+function render(){
+  const q = filterQuery.toLowerCase().trim();
+  let html = "";
+
+  // Render Domain Keywords
+  const renderGroup = (key, title, badge) => {
+    const items = DATA[key].filter(x => !q || x.term.toLowerCase().includes(q) || x.def.toLowerCase().includes(q) || x.ex.toLowerCase().includes(q));
+    if (!items.length) return "";
+    return `<div class="sec-title">${title} <span class="badge">${items.length} items</span></div>
+    <div class="grid-cards">${items.map(x => `
+      <div class="card">
+        <div class="card-term">${esc(x.term)}</div>
+        <div class="card-def">${esc(x.def)}</div>
+        <div class="card-ex"><b>Example:</b> ${esc(x.ex)}</div>
+      </div>
+    `).join("")}</div>`;
+  };
+
+  // Render Traps
+  const renderTraps = () => {
+    const items = DATA.traps.filter(x => !q || x.key.toLowerCase().includes(q) || x.desc.toLowerCase().includes(q));
+    if (!items.length) return "";
+    return `<div class="sec-title">68 Exam Traps & Decision Checks <span class="badge">${items.length} traps</span></div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden">
+      ${items.map(x => `
+        <div class="trap-row">
+          <span class="trap-num">${x.num}</span>
+          <span class="trap-key">${esc(x.key)}</span>
+          <span class="trap-desc">${esc(x.desc)}</span>
+        </div>
+      `).join("")}
+    </div>`;
+  };
+
+  // Render Flowcharts
+  const renderFlows = () => {
+    const items = DATA.flowcharts.filter(x => !q || x.title.toLowerCase().includes(q) || x.why.toLowerCase().includes(q) || x.steps.some(s => s.toLowerCase().includes(q)));
+    if (!items.length) return "";
+    return `<div class="sec-title">Flowchart Lab: Guided Ordering Sequences <span class="badge">${items.length} flows</span></div>
+    <div>${items.map(x => `
+      <div class="flow-card">
+        <div class="flow-header">
+          <span class="flow-num">FLOW #${x.num}</span>
+          <span class="flow-title">${esc(x.title)}</span>
+        </div>
+        <div class="flow-steps">
+          ${x.steps.map((s, i) => `
+            <div class="step">
+              <span class="step-num">${i + 1}</span>
+              <div class="step-text">${esc(s)}</div>
+            </div>
+          `).join("")}
+        </div>
+        <div class="flow-footer">
+          <b>ORDER KEY WHY:</b> ${esc(x.why)}
+          <div class="flow-real"><b>Real-World Example:</b> ${esc(x.real)}</div>
+        </div>
+      </div>
+    `).join("")}</div>`;
+  };
+
+  if (activeTab === "all" || activeTab === "d1") html += renderGroup("d1", "Domain 1: AI & ML Fundamentals (20%)", "D1");
+  if (activeTab === "all" || activeTab === "d2") html += renderGroup("d2", "Domain 2: Generative AI and Model Mechanics (24%)", "D2");
+  if (activeTab === "all" || activeTab === "d3") html += renderGroup("d3", "Domain 3: Foundation-Model Applications & RAG (28%)", "D3");
+  if (activeTab === "all" || activeTab === "d4") html += renderGroup("d4", "Domain 4: Responsible AI Principles (14%)", "D4");
+  if (activeTab === "all" || activeTab === "d5") html += renderGroup("d5", "Domain 5: Security, Compliance & Governance (14%)", "D5");
+  if (activeTab === "all" || activeTab === "traps") html += renderTraps();
+  if (activeTab === "all" || activeTab === "flowcharts") html += renderFlows();
+
+  $("content").innerHTML = html || `<p style="padding:40px;text-align:center;color:var(--muted)">No matching keywords or flowcharts found for "${esc(filterQuery)}".</p>`;
+}
+
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+$("search").addEventListener("input", e => { filterQuery = e.target.value; render(); });
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeTab = btn.dataset.tab;
+    render();
+  });
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "/" && document.activeElement !== $("search")) {
+    e.preventDefault();
+    $("search").focus();
+  }
+});
+
+render();
+</script>
+</body>
+</html>
